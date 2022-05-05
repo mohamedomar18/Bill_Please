@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 int intpax = Integer.parseInt(pax);
                 double newAmount = 0;
                 double discount = Double.parseDouble(disc);
-                double dblDiscount = discount/100 + 1;
+                double dblDiscount = discount / 100 + 1;
 
                 if (tbtnSVS.isChecked() == true && tbtnGST.isChecked() == true) {
                     newAmount = (dblAmt / dblDiscount) * 1.10 * 1.07;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                     newAmount = dblAmt;
                 }
 
-                double splitPay = newAmount/intpax;
+                double splitPay = newAmount / intpax;
                 tvTotal.setText("Total bill: $" + newAmount);
                 tvSplitPay.setText("Each person has to pay $" + splitPay);
 
