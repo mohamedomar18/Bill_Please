@@ -3,11 +3,13 @@ package sg.edu.rp.c346.id20048218.billplease;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,6 +44,27 @@ public class MainActivity extends AppCompatActivity {
         btnSplit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (TextUtils.isEmpty(etAmount.getText().toString()))
+                {
+                    Toast.makeText(MainActivity.this,
+                            "Empty field not allowed!",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                if (TextUtils.isEmpty(etPax.getText().toString()))
+                {
+                    Toast.makeText(MainActivity.this,
+                            "Empty field not allowed!",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                if (TextUtils.isEmpty(etDiscount.getText().toString()))
+                {
+                    Toast.makeText(MainActivity.this,
+                            "Empty field not allowed!",
+                            Toast.LENGTH_SHORT).show();
+                }
+
                 String amt = etAmount.getText().toString();
                 String pax = etPax.getText().toString();
                 String disc = etDiscount.getText().toString();
@@ -62,14 +85,17 @@ public class MainActivity extends AppCompatActivity {
                     newAmount = dblAmt;
                 }
 
+                String strTotal = String.format("%.2f", newAmount);
+                tvTotal.setText("Total bill: $" + strTotal);
+
                 double splitPay = newAmount / intpax;
-                tvTotal.setText("Total bill: $" + newAmount);
+                String strSplitPay = String.format("%.2f", splitPay);
 
                 int selectedId = rgPayment.getCheckedRadioButtonId();
                 if (selectedId == R.id.rbCash){
-                    tvSplitPay.setText("Each person has to pay $" + splitPay + " in cash");
+                    tvSplitPay.setText("Each person has to pay $" + strSplitPay + " in cash");
                 } else {
-                    tvSplitPay.setText("Each person has to pay $" + splitPay + " via PayNow to 91234567");
+                    tvSplitPay.setText("Each person has to pay $" + strSplitPay + " via PayNow to 91234567");
                 }
 
                 btnReset.setOnClickListener(new View.OnClickListener() {
