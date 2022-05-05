@@ -108,11 +108,7 @@ public class MainActivity extends AppCompatActivity {
                         tbtnGST.setChecked(false);
                     }
                 });
-
             }
         });
-
     }
-
-
 }
