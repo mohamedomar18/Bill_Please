@@ -64,7 +64,22 @@ public class MainActivity extends AppCompatActivity {
 
                 double splitPay = newAmount / intpax;
                 tvTotal.setText("Total bill: $" + newAmount);
-                tvSplitPay.setText("Each person has to pay $" + splitPay);
+
+                int selectedId = rgPayment.getCheckedRadioButtonId();
+                if (selectedId == R.id.rbCash){
+                    tvSplitPay.setText("Each person has to pay $" + splitPay + " in cash");
+                } else {
+                    tvSplitPay.setText("Each person has to pay $" + splitPay + " via PayNow to 91234567");
+                }
+
+                btnReset.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        etAmount.getText().clear();
+                        etPax.getText().clear();
+                        etDiscount.getText().clear();
+                    }
+                });
 
             }
         });
