@@ -78,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
                         etAmount.getText().clear();
                         etPax.getText().clear();
                         etDiscount.getText().clear();
+                        tbtnSVS.setChecked(false);
+                        tbtnGST.setChecked(false);
                     }
                 });
 
